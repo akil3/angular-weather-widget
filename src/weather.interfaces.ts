@@ -31,7 +31,7 @@ export interface WeatherQueryParams {
     lat: number;
     lng: number;
   };
-  zipCode?: string;
+  zipCode?: number;
   units?: TemperatureScale;
   lang?: string;
 }
