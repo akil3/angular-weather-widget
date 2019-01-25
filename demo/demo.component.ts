@@ -38,24 +38,35 @@ import {
       .row {
         padding: 0.4em;
       }
-
-
-      `
+    `
   ],
   template: `
     <div class="menu">
       <h4>Data settings</h4>
-      <div class="row"> Place<input type="text" [(ngModel)]="settings.location.cityName"></div>
-      <div class="row">Show Wind<input type="checkbox" [(ngModel)]="settings.showWind"></div>
-      <div class="row"> Show Details<input type="checkbox" [(ngModel)]="settings.showDetails"></div>
-      <div class="row"> Show Forecast<input type="checkbox" [(ngModel)]="settings.showForecast"></div>
-      <div class="row">Forecast Mode
+      <div class="row">
+        Place<input type="text" [(ngModel)]="settings.location.cityName" />
+      </div>
+      <div class="row">
+        Show Wind<input type="checkbox" [(ngModel)]="settings.showWind" />
+      </div>
+      <div class="row">
+        Show Details<input type="checkbox" [(ngModel)]="settings.showDetails" />
+      </div>
+      <div class="row">
+        Show Forecast<input
+          type="checkbox"
+          [(ngModel)]="settings.showForecast"
+        />
+      </div>
+      <div class="row">
+        Forecast Mode
         <select [(ngModel)]="settings.forecastMode">
           <option [value]="'DETAILED'">Detailed</option>
           <option [value]="'GRID'">Grid</option>
         </select>
       </div>
-      <div class="row">Temperature units
+      <div class="row">
+        Temperature units
         <select [(ngModel)]="settings.scale">
           <option [value]="'celcius'">Celcius</option>
           <option [value]="'kelvin'">Kelvin</option>
@@ -63,22 +74,36 @@ import {
         </select>
       </div>
       <h4>Layout</h4>
-      <div class="row">Layout
+      <div class="row">
+        Layout
         <select [(ngModel)]="settings.layout">
           <option [value]="'wide'">Wide</option>
           <option [value]="'narrow'">Narrow</option>
         </select>
       </div>
-      <div class="row">Color<input type="text" [(ngModel)]="settings.color"></div>
-      <div class="row">Background color<input type="text" [(ngModel)]="settings.backgroundColor"></div>
-      <div class="row">Width<input type="text" [(ngModel)]="settings.width"></div>
-      <div class="row">Height<input type="text" [(ngModel)]="settings.height"></div>
+      <div class="row">
+        Color<input type="text" [(ngModel)]="settings.color" />
+      </div>
+      <div class="row">
+        Background color<input
+          type="text"
+          [(ngModel)]="settings.backgroundColor"
+        />
+      </div>
+      <div class="row">
+        Width<input type="text" [(ngModel)]="settings.width" />
+      </div>
+      <div class="row">
+        Height<input type="text" [(ngModel)]="settings.height" />
+      </div>
       <button (click)="onUpdate()">Update</button>
     </div>
     <weather-widget
-    [currentWeather]=currentWeather
-    [forecast]=forecast
-    [settings]="settings"></weather-widget>`
+      [currentWeather]="currentWeather"
+      [forecast]="forecast"
+      [settings]="settings"
+    ></weather-widget>
+  `
 })
 export class DemoComponent {
   settings: WeatherSettings = {

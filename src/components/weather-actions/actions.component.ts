@@ -10,18 +10,18 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
-    button {
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      font-size: 1.6em;
-      border-radius: 50%;
-      color: inherit;
-    }
-    button:hover {
-      background: rgba(0,0,0, 0.1);
-    }
-  `
+      button {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        font-size: 1.6em;
+        border-radius: 50%;
+        color: inherit;
+      }
+      button:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+    `
   ],
   template: `
     <button (click)="update.emit()"><i class="wi wi-refresh"></i></button>

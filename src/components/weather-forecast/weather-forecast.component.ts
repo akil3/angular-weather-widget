@@ -8,22 +8,24 @@ import preventExtensions = Reflect.preventExtensions;
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
-             :host {
-               margin-top: 1em;
-               display: block;
-               width: 100%;
-               box-sizing: border-box;
-             }
-           `
+      :host {
+        margin-top: 1em;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+      }
+    `
   ],
   template: `
     <weather-forecast-simple-grid
       *ngIf="isGridForecast"
-      [forecast]="forecast"></weather-forecast-simple-grid>
+      [forecast]="forecast"
+    ></weather-forecast-simple-grid>
     <weather-forecast-detailed
       *ngIf="!isGridForecast"
       [settings]="settings"
-      [forecast]="forecast"></weather-forecast-detailed>
+      [forecast]="forecast"
+    ></weather-forecast-detailed>
   `
 })
 export class WeatherForecastComponent {

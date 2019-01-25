@@ -11,15 +11,14 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
-    :host {
-      margin-top: 1em;
-      font-size: 1em;
-    }
-  `
+      :host {
+        margin-top: 1em;
+        font-size: 1em;
+      }
+    `
   ],
   template: `
     {{ place }}
-
   `
 })
 export class WeatherLocationComponent {

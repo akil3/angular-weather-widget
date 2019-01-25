@@ -11,15 +11,9 @@ import { WeatherHelpersService } from '../../../services/weather-helpers.service
 @Component({
   selector: 'weather-forecast-chart-wide',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: [
-    `
-           `
-  ],
+  styles: [``],
   template: `
-    <div>
-
-    </div>
-
+    <div></div>
   `
 })
 export class WeatherForecastChartWideComponent {

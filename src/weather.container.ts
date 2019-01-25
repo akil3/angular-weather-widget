@@ -27,113 +27,126 @@ import {
   changeDetection: ChangeDetectionStrategy.Default,
   styles: [
     `
-             :host {
-               display: flex;
-               position: relative;
-               padding: 1em;
-               box-sizing: border-box;
-             }
-             .info {
-               display: flex;
-               flex-direction: column;
-               align-items: center;
-               justify-content: center;
-               width: 100%;
-             }
-             .info.wide {
-               flex-direction: row;
-             }
-             .wide .current {
-               flex-grow: 0;
-             }
-             .wide .forecast {
-               flex-grow: 1;
-               overflow-y: auto;
-               height: 100%;
-             }
-             .current {
-               display: flex;
-               flex-direction: column;
-               align-items: center;
-               justify-content: center;
-               min-width: 140px;
-             }
-             .forecast {
-               min-width: 200px;
-               width: 100%;
-               overflow-y: auto;
-             }
-             .current, .forecast {
-               padding: 0.5em;
-             }
-             weather-actions {
-               display: block;
-               position: absolute;
-               top: 10px;
-               right: 10px;
-             }
-             weather-current-temperature.big {
-               font-size: 3em;
-             }
-             weather-icon.big {
-               font-size: 6em;
-               padding: 0.15em;
-             }
-             .empty {
-               flex-direction: row;
-             }
-             .empty i {
-               font-size: 3em;
-               margin-right: 0.3em;
-             }
-
-           `
+      :host {
+        display: flex;
+        position: relative;
+        padding: 1em;
+        box-sizing: border-box;
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+      .info.wide {
+        flex-direction: row;
+      }
+      .wide .current {
+        flex-grow: 0;
+      }
+      .wide .forecast {
+        flex-grow: 1;
+        overflow-y: auto;
+        height: 100%;
+      }
+      .current {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 140px;
+      }
+      .forecast {
+        min-width: 200px;
+        width: 100%;
+        overflow-y: auto;
+      }
+      .current,
+      .forecast {
+        padding: 0.5em;
+      }
+      weather-actions {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      weather-current-temperature.big {
+        font-size: 3em;
+      }
+      weather-icon.big {
+        font-size: 6em;
+        padding: 0.15em;
+      }
+      .empty {
+        flex-direction: row;
+      }
+      .empty i {
+        font-size: 3em;
+        margin-right: 0.3em;
+      }
+    `
   ],
   template: `
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons-wind.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons-wind.min.css"
+    />
     <div *ngIf="currentWeather" class="info" [class.wide]="isWideLayout">
       <div class="current">
         <weather-icon
           class="big"
           [iconImageUrl]="currentWeather?.iconUrl"
-          [iconClass]="currentWeather?.iconClass"></weather-icon>
+          [iconClass]="currentWeather?.iconClass"
+        ></weather-icon>
         <weather-current-description
-          [descripion]="currentWeather?.description"></weather-current-description>
+          [descripion]="currentWeather?.description"
+        ></weather-current-description>
         <weather-current-wind
           *ngIf="settings.showWind"
           [scale]="settings.scale"
           [deg]="currentWeather?.wind.deg"
-          [speed]="currentWeather?.wind.speed"></weather-current-wind>
+          [speed]="currentWeather?.wind.speed"
+        ></weather-current-wind>
         <weather-location [place]="currentWeather?.location"></weather-location>
         <weather-current-temperature
           class="big"
           [temp]="currentWeather?.temp"
-          [deg]="settings.scale"></weather-current-temperature>
+          [deg]="settings.scale"
+        ></weather-current-temperature>
         <weather-current-details
           *ngIf="settings.showDetails"
           [maxTemp]="currentWeather?.maxTemp"
           [minTemp]="currentWeather?.minTemp"
           [pressure]="currentWeather?.pressure"
-          [humidity]="currentWeather?.humidity"></weather-current-details>
+          [humidity]="currentWeather?.humidity"
+        ></weather-current-details>
       </div>
       <div class="forecast" *ngIf="settings.showForecast">
         <weather-forecast
           [forecast]="forecast"
           [settings]="settings"
-          [mode]="settings.forecastMode"></weather-forecast>
+          [mode]="settings.forecastMode"
+        ></weather-forecast>
       </div>
     </div>
     <div *ngIf="!currentWeather" class="info empty">
       <i class="wi wi-sunrise"></i>
       No weather data...
     </div>
-    <weather-actions *ngIf="isMouseOn" (update)="getWeather()"></weather-actions>
-
+    <weather-actions
+      *ngIf="isMouseOn"
+      (update)="getWeather()"
+    ></weather-actions>
   `
-})
-export // tslint:disable-next-line:component-class-suffix
-class WeatherContainer implements OnDestroy {
+}) // tslint:disable-next-line:component-class-suffix
+export class WeatherContainer implements OnDestroy {
   @HostBinding('style.background') background: string;
   @HostBinding('style.color') color: string;
   @HostBinding('style.width') width = 'auto';

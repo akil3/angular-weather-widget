@@ -15,38 +15,37 @@ import { WeatherSettings } from '../../../weather.interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
-             :host {
-               display: flex;
-               align-items: center;
-               padding: 0.1em 0;
-               font-size: 1em;
-               box-sizing: border-box;
-               justify-content: flex-start;
-               width: 100%;
+      :host {
+        display: flex;
+        align-items: center;
+        padding: 0.1em 0;
+        font-size: 1em;
+        box-sizing: border-box;
+        justify-content: flex-start;
+        width: 100%;
+      }
+      :host > * {
+        padding: 0 0.4em;
+      }
+      .left {
+        flex-grow: 0;
+      }
+      weather-chart {
+        height: 80px;
+        width: 80%;
+        flex: 1 1;
+      }
 
-             }
-             :host > * {
-               padding: 0 0.4em;
-             }
-             .left {
-               flex-grow: 0;
-             }
-             weather-chart {
-               height: 80px;
-               width: 80%;
-               flex: 1 1;
-             }
-
-             weather-icon {
-               margin-top: 0.3em;
-               font-size: 1.4em;
-               display: block;
-             }
-           `
+      weather-icon {
+        margin-top: 0.3em;
+        font-size: 1.4em;
+        display: block;
+      }
+    `
   ],
   template: `
     <div class="left">
-      {{forecast[0]?.data | date:'EEE' }}
+      {{ forecast[0]?.data | date: 'EEE' }}
       <weather-icon [iconClass]="forecast[0]?.iconClass"></weather-icon>
     </div>
     <weather-chart

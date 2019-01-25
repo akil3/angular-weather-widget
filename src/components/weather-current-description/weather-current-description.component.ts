@@ -11,14 +11,14 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
-           :host {
-             display: block;
-             text-align: center;
-           }
-           `
+      :host {
+        display: block;
+        text-align: center;
+      }
+    `
   ],
   template: `
-    {{ descripion | uppercase}}
+    {{ descripion | uppercase }}
   `
 })
 export class WeatherCurrentDescriptionComponent {

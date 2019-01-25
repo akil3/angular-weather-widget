@@ -13,19 +13,21 @@ import { WeatherHelpersService } from '../../../services/weather-helpers.service
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
-           :host {
-             display: flex;
-             width: 100%;
-             justify-content: space-between;
-           }
-           weather-forecast-grid-day {
-             margin: 0 0.4em;
-           }
-           `
+      :host {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+      weather-forecast-grid-day {
+        margin: 0 0.4em;
+      }
+    `
   ],
   template: `
     <ng-container *ngFor="let forecast of forecastPerDay">
-      <weather-forecast-grid-day [forecast]="forecast"></weather-forecast-grid-day>
+      <weather-forecast-grid-day
+        [forecast]="forecast"
+      ></weather-forecast-grid-day>
     </ng-container>
   `
 })

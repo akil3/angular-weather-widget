@@ -13,22 +13,22 @@ import { WeatherSettings } from '../../weather.interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
-    :host {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      font-size: 0.8em;
-      min-height: 1.3em;
-    }
-    i {
-      margin-left: 0.3em;
-      font-size: 1.6em;
-    }
-  `
+      :host {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 0.8em;
+        min-height: 1.3em;
+      }
+      i {
+        margin-left: 0.3em;
+        font-size: 1.6em;
+      }
+    `
   ],
   template: `
     <span>Wind {{ speed }} {{ unit }}</span>
-   <i [class]="windIcon"></i>
+    <i [class]="windIcon"></i>
   `
 })
 export class WeatherCurrentWindComponent {

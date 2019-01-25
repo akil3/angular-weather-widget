@@ -12,7 +12,7 @@ import {
   styles: [``],
   template: `
     <i *ngIf="iconClass" [class]="iconClass"></i>
-    <img *ngIf="iconImageUrl && !iconClass" [src]="iconImageUrl">
+    <img *ngIf="iconImageUrl && !iconClass" [src]="iconImageUrl" />
   `
 })
 export class WeatherIconComponent {

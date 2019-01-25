@@ -5,19 +5,20 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
-  :host {
-    display: block;
-    line-height: 1.1em;
-  }
-    .deg {
-      letter-spacing: -0.13em;
-      position: relative;
-      left: -0.2em;
-    }
-  `
+      :host {
+        display: block;
+        line-height: 1.1em;
+      }
+      .deg {
+        letter-spacing: -0.13em;
+        position: relative;
+        left: -0.2em;
+      }
+    `
   ],
   template: `
-      {{ temp?.toFixed() }} <span *ngIf="temp" class="deg">&deg; {{ unitSymbol }}</span>
+    {{ temp?.toFixed() }}
+    <span *ngIf="temp" class="deg">&deg; {{ unitSymbol }}</span>
   `
 })
 export class WeatherCurrentTempComponent {

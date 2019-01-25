@@ -11,9 +11,9 @@ import { WeatherSettings } from '../../../weather.interfaces';
     <ng-container *ngFor="let forecast of forecastPerDay">
       <weather-forecast-detail-day
         [settings]="settings"
-        [forecast]="forecast"></weather-forecast-detail-day>
+        [forecast]="forecast"
+      ></weather-forecast-detail-day>
     </ng-container>
-
   `
 })
 export class WeatherForecastDetailedComponent {
