@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.5"></a>
+## [1.2.5](https://github.com/krzysztofsaja/angular-weather-widget/compare/v1.2.4...v1.2.5) (2019-01-25)
+
+
+### Bug Fixes
+
+* **update:** Updated angular. ([4ad9246](https://github.com/krzysztofsaja/angular-weather-widget/commit/4ad9246))
+* **update:** updated rxjs. ([c1c99c4](https://github.com/krzysztofsaja/angular-weather-widget/commit/c1c99c4))
+
+
+
 <a name="1.2.4"></a>
 ## [1.2.4](https://github.com/krzysztofsaja/angular-weather-widget/compare/v1.2.3...v1.2.4) (2017-07-24)
 
