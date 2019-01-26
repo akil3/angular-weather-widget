@@ -28,7 +28,7 @@ export class ChartComponent implements OnInit, OnChanges {
         {
           ticks: {
             // Remove excess decimal places
-            callback: function(value, index, values) {
+            callback: function(value: any) {
               return Number(value.toFixed(0));
             }
           }

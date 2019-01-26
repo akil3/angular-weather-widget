@@ -1,5 +1,5 @@
 import { Component, Input, ElementRef } from '@angular/core';
-import { Chart } from 'chart.js';
+import * as Chart from 'chart.js';
 var ChartComponent = /** @class */ (function () {
     function ChartComponent(elementRef) {
         this.elementRef = elementRef;
@@ -10,7 +10,7 @@ var ChartComponent = /** @class */ (function () {
                 {
                     ticks: {
                         // Remove excess decimal places
-                        callback: function (value, index, values) {
+                        callback: function (value) {
                             return Number(value.toFixed(0));
                         }
                     }

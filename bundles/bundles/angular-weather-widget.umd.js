@@ -28538,7 +28538,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(5);
-var chart_js_1 = __webpack_require__(269);
+var Chart = __webpack_require__(269);
 var ChartComponent = /** @class */ (function () {
     function ChartComponent(elementRef) {
         this.elementRef = elementRef;
@@ -28549,14 +28549,14 @@ var ChartComponent = /** @class */ (function () {
                 {
                     ticks: {
                         // Remove excess decimal places
-                        callback: function (value, index, values) {
+                        callback: function (value) {
                             return Number(value.toFixed(0));
                         }
                     }
                 }
             ]
         };
-        this.chart = new chart_js_1.Chart(this.elementRef.nativeElement.querySelector('canvas'), {
+        this.chart = new Chart(this.elementRef.nativeElement.querySelector('canvas'), {
             type: this.type,
             data: this.data,
             options: this.options
