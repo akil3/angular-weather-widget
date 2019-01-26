@@ -23,8 +23,8 @@ export declare class WeatherContainer implements OnDestroy {
     private _settings;
     constructor(weatherApi: WeatherApiService, changeDetectorRef: ChangeDetectorRef, renderer: Renderer2, element: ElementRef);
     ngOnDestroy(): void;
-    private onMouseEnter();
-    private onMouseLeave();
+    onMouseEnter(): void;
+    onMouseLeave(): void;
     getWeather(): void;
     currentWeatherCall(): Observable<CurrentWeather>;
     forecastCall(): Observable<Forecast[]>;

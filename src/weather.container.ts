@@ -201,12 +201,12 @@ export class WeatherContainer implements OnDestroy {
   }
 
   @HostListener('mouseenter')
-  private onMouseEnter() {
+  onMouseEnter() {
     this.renderer.addClass(this.element.nativeElement, 'active');
     this.isMouseOn = true;
   }
   @HostListener('mouseleave')
-  private onMouseLeave() {
+  onMouseLeave() {
     this.renderer.removeClass(this.element.nativeElement, 'active');
     this.isMouseOn = false;
   }
