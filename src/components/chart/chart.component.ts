@@ -6,7 +6,7 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import { ChartOptions, ChartData, Chart } from 'chart.js';
+import * as Chart from 'chart.js';
 @Component({
   selector: 'weather-chart',
   template: '<canvas></canvas>',
@@ -17,8 +17,8 @@ export class ChartComponent implements OnInit, OnChanges {
 
   @Input()
   type: 'line' | 'bar' | 'radar' | 'pie' | 'polarArea' | 'bubble' | 'scatter';
-  @Input() data: ChartData;
-  @Input() options: ChartOptions;
+  @Input() data: any;
+  @Input() options: any;
 
   constructor(private elementRef: ElementRef) {}
 
