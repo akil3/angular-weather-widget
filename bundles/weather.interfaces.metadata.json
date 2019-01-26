@@ -1,0 +1,1 @@
+[{"__symbolic":"module","version":4,"metadata":{"WeatherSettings":{"__symbolic":"class"},"ForecastMode":{"GRID":"GRID","DETAILED":"DETAILED"},"TemperatureScale":{"CELCIUS":"celcius","KELVIN":"kelvin","FAHRENHEIT":"fahrenheit"},"WeatherQueryParams":{"__symbolic":"interface"},"WeatherLayout":{"WIDE":"wide","NARROW":"narrow"}}}]
