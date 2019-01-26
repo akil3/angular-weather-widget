@@ -9,8 +9,7 @@ import {
   OnDestroy,
   Renderer2
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription } from 'rxjs';
 import {
   CurrentWeather,
   Forecast,

@@ -1,11 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, URLSearchParams } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { PoolingService } from '../poling.service';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/first';
+import { map, filter } from 'rxjs/operators';
 import { WeatherQueryParams } from '../../weather.interfaces';
 
 @Injectable()
@@ -18,14 +15,14 @@ export abstract class WeatherApiService {
   ) {}
 
   currentWeather(queryParams: WeatherQueryParams): Observable<CurrentWeather> {
-    return this.callApi(queryParams, '/weather').map(
-      this.mapCurrentWeatherResponse.bind(this)
+    return this.callApi(queryParams, '/weather').pipe(
+      map(this.mapCurrentWeatherResponse.bind(this))
     );
   }
 
   forecast(queryParams: WeatherQueryParams): Observable<Forecast[]> {
-    return this.callApi(queryParams, '/forecast').map(
-      this.mapForecastResponse.bind(this)
+    return this.callApi(queryParams, '/forecast').pipe(
+      map(this.mapForecastResponse.bind(this))
     );
   }
 
@@ -37,8 +34,10 @@ export abstract class WeatherApiService {
     const requestOptions = this.getRequestOptions(params);
     const apiCall: Observable<any> = this.http
       .get(`${this.apiConfig.baseUrl}/${endpoint}`, requestOptions)
-      .map(resp => resp.json())
-      .filter(el => !!el);
+      .pipe(
+        map(resp => resp.json()),
+        filter(el => !!el)
+      );
     return this.wrapWithPoll(apiCall);
   }
 

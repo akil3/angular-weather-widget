@@ -8,7 +8,6 @@ import {
   CURRENT_WATHER_MOCK,
   FORECAST_MOCK
 } from '../src/mocks/open-weather-map.mock';
-import { Observable } from 'rxjs/Observable';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
