@@ -3,7 +3,7 @@
   "version": "1.2.7",
   "description": "Weather Widget based on Open Weather Map Api",
   "main": "./bundles/bundles/angular-weather-widget.umd.js",
-  "module": ".bundles/index.js",
+  "module": "./bundles/index.js",
   "typings": "./bundles/index.d.ts",
   "scripts": {
     "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
