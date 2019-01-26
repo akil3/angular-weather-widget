@@ -41,7 +41,7 @@ export class PoolingService {
 
     return source.pipe(
       multicast(subject),
-      refCount,
+      refCount(),
       merge(operation())
     );
   }

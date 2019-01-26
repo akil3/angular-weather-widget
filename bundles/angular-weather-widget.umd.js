@@ -8446,7 +8446,7 @@ var PoolingService = /** @class */ (function () {
                 }
             };
         });
-        return source.pipe(operators_1.multicast(subject), operators_1.refCount, operators_1.merge(operation()));
+        return source.pipe(operators_1.multicast(subject), operators_1.refCount(), operators_1.merge(operation()));
     };
     PoolingService = __decorate([
         core_1.Injectable(),
