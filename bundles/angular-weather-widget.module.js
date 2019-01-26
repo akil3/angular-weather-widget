@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Http, HttpModule } from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { WeatherApiName, WeatherApiService } from './services/api/weather.api.service';
 import { PoolingService } from './services/poling.service';
 import { WeatherContainer } from './weather.container';
@@ -37,7 +37,7 @@ export function forRoot(config) {
             {
                 provide: WeatherApiService,
                 useFactory: apiServiceFactory,
-                deps: [Http, PoolingService, 'WEATHER_CONFIG']
+                deps: [HttpClient, PoolingService, 'WEATHER_CONFIG']
             },
             { provide: 'WEATHER_CONFIG', useValue: config }
         ]
@@ -49,7 +49,7 @@ var AngularWeatherWidgetModule = /** @class */ (function () {
     AngularWeatherWidgetModule.forRoot = forRoot;
     AngularWeatherWidgetModule.decorators = [
         { type: NgModule, args: [{
-                    imports: [CommonModule, HttpModule],
+                    imports: [CommonModule, HttpClientModule],
                     declarations: [
                         ChartComponent,
                         WeatherContainer,

@@ -7,13 +7,13 @@
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("@angular/core"), require("@angular/http"), require("rxjs/operators"), require("@angular/common"));
+		module.exports = factory(require("@angular/core"), require("@angular/common/http"), require("rxjs/operators"), require("@angular/common"));
 	else if(typeof define === 'function' && define.amd)
-		define(["@angular/core", "@angular/http", "rxjs/operators", "@angular/common"], factory);
+		define(["@angular/core", "@angular/common/http", "rxjs/operators", "@angular/common"], factory);
 	else if(typeof exports === 'object')
-		exports["angularWeatherWidget"] = factory(require("@angular/core"), require("@angular/http"), require("rxjs/operators"), require("@angular/common"));
+		exports["angularWeatherWidget"] = factory(require("@angular/core"), require("@angular/common/http"), require("rxjs/operators"), require("@angular/common"));
 	else
-		root["angularWeatherWidget"] = factory(root["ng"]["core"], root["ng"]["http"], root["Rx"], root["ng"]["common"]);
+		root["angularWeatherWidget"] = factory(root["ng"]["core"], root["ng"]["commonHttp"], root["Rx"], root["ng"]["common"]);
 })(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_34__, __WEBPACK_EXTERNAL_MODULE_44__, __WEBPACK_EXTERNAL_MODULE_254__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -7938,17 +7938,17 @@ var WeatherApiService = /** @class */ (function () {
         return this.poolingService.execute(function () { return apiCall; }, this.poollingInterval);
     };
     WeatherApiService.prototype.getRequestOptions = function (queryParams) {
-        return new http_1.RequestOptions({
-            headers: new http_1.Headers(),
+        return {
+            headers: new http_1.HttpHeaders(),
             params: this.getQueryParams(queryParams)
-        });
+        };
     };
     WeatherApiService.prototype.getQueryParams = function (obj) {
-        var queryParams = new http_1.URLSearchParams();
-        queryParams.set(this.setTokenKey(), this.apiConfig.key);
+        var queryParams = new http_1.HttpParams();
+        queryParams.append(this.setTokenKey(), this.apiConfig.key);
         for (var key in obj) {
             if (obj.hasOwnProperty(key)) {
-                queryParams.set(key.toString(), obj[key]);
+                queryParams.append(key.toString(), obj[key]);
             }
         }
         return queryParams;
@@ -7956,7 +7956,7 @@ var WeatherApiService = /** @class */ (function () {
     WeatherApiService = __decorate([
         core_1.Injectable(),
         __param(2, core_1.Inject('WEATHER_CONFIG')),
-        __metadata("design:paramtypes", [http_1.Http,
+        __metadata("design:paramtypes", [http_1.HttpClient,
             poling_service_1.PoolingService,
             WeatherApiConfig])
     ], WeatherApiService);
@@ -24004,7 +24004,7 @@ function forRoot(config) {
             {
                 provide: weather_api_service_1.WeatherApiService,
                 useFactory: apiServiceFactory,
-                deps: [http_1.Http, poling_service_1.PoolingService, 'WEATHER_CONFIG']
+                deps: [http_1.HttpClient, poling_service_1.PoolingService, 'WEATHER_CONFIG']
             },
             { provide: 'WEATHER_CONFIG', useValue: config }
         ]
@@ -24017,7 +24017,7 @@ var AngularWeatherWidgetModule = /** @class */ (function () {
     AngularWeatherWidgetModule.forRoot = forRoot;
     AngularWeatherWidgetModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, http_1.HttpModule],
+            imports: [common_1.CommonModule, http_1.HttpClientModule],
             declarations: [
                 chart_component_1.ChartComponent,
                 weather_container_1.WeatherContainer,
@@ -27799,7 +27799,7 @@ var OpenWeatherMapApiService = /** @class */ (function (_super) {
     };
     OpenWeatherMapApiService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.Http,
+        __metadata("design:paramtypes", [http_1.HttpClient,
             poling_service_1.PoolingService,
             weather_api_service_1.WeatherApiConfig])
     ], OpenWeatherMapApiService);

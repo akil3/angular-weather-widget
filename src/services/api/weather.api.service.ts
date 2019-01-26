@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, URLSearchParams } from '@angular/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PoolingService } from '../poling.service';
 import { map, filter } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { WeatherQueryParams } from '../../weather.interfaces';
 export abstract class WeatherApiService {
   poollingInterval = 60000 * 60;
   constructor(
-    protected http: Http,
+    protected http: HttpClient,
     protected poolingService: PoolingService,
     @Inject('WEATHER_CONFIG') public apiConfig: WeatherApiConfig
   ) {}
@@ -35,7 +35,7 @@ export abstract class WeatherApiService {
     const apiCall: Observable<any> = this.http
       .get(`${this.apiConfig.baseUrl}/${endpoint}`, requestOptions)
       .pipe(
-        map(resp => resp.json()),
+        map((resp: any) => resp.json()),
         filter(el => !!el)
       );
     return this.wrapWithPoll(apiCall);
@@ -73,18 +73,18 @@ export abstract class WeatherApiService {
   }
 
   private getRequestOptions(queryParams: Object) {
-    return new RequestOptions({
-      headers: new Headers(),
+    return {
+      headers: new HttpHeaders(),
       params: this.getQueryParams(queryParams)
-    });
+    };
   }
 
-  private getQueryParams(obj: { [key: string]: any }): URLSearchParams {
-    const queryParams = new URLSearchParams();
-    queryParams.set(this.setTokenKey(), this.apiConfig.key);
+  private getQueryParams(obj: { [key: string]: any }): HttpParams {
+    const queryParams = new HttpParams();
+    queryParams.append(this.setTokenKey(), this.apiConfig.key);
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
-        queryParams.set(key.toString(), obj[key]);
+        queryParams.append(key.toString(), obj[key]);
       }
     }
     return queryParams;

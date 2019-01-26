@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { TemperatureScale } from '../../../components/weather-current-temperature/current-temperature.component';
 import { PoolingService } from '../../poling.service';
 import { WeatherApiConfig, WeatherApiService } from '../weather.api.service';
@@ -113,7 +113,7 @@ var OpenWeatherMapApiService = /** @class */ (function (_super) {
     ];
     /** @nocollapse */
     OpenWeatherMapApiService.ctorParameters = function () { return [
-        { type: Http },
+        { type: HttpClient },
         { type: PoolingService },
         { type: WeatherApiConfig }
     ]; };

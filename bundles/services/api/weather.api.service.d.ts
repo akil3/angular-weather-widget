@@ -1,13 +1,13 @@
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PoolingService } from '../poling.service';
 import { WeatherQueryParams } from '../../weather.interfaces';
 export declare abstract class WeatherApiService {
-    protected http: Http;
+    protected http: HttpClient;
     protected poolingService: PoolingService;
     apiConfig: WeatherApiConfig;
     poollingInterval: number;
-    constructor(http: Http, poolingService: PoolingService, apiConfig: WeatherApiConfig);
+    constructor(http: HttpClient, poolingService: PoolingService, apiConfig: WeatherApiConfig);
     currentWeather(queryParams: WeatherQueryParams): Observable<CurrentWeather>;
     forecast(queryParams: WeatherQueryParams): Observable<Forecast[]>;
     protected callApi(queryParams: WeatherQueryParams, endpoint: string): Observable<any>;

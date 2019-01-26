@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { Http, HttpModule } from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {
   WeatherApiConfig,
   WeatherApiName,
@@ -27,7 +27,7 @@ import { WeatherForecastChartWideComponent } from './components/weather-forecast
 import { WeatherHelpersService } from './services/weather-helpers.service';
 
 export function apiServiceFactory(
-  http: Http,
+  http: HttpClient,
   pooling: PoolingService,
   openWeather: WeatherApiConfig
 ) {
@@ -48,7 +48,7 @@ export function forRoot(config: WeatherApiConfig): ModuleWithProviders {
       {
         provide: WeatherApiService,
         useFactory: apiServiceFactory,
-        deps: [Http, PoolingService, 'WEATHER_CONFIG']
+        deps: [HttpClient, PoolingService, 'WEATHER_CONFIG']
       },
       { provide: 'WEATHER_CONFIG', useValue: config }
     ]
@@ -56,7 +56,7 @@ export function forRoot(config: WeatherApiConfig): ModuleWithProviders {
 }
 
 @NgModule({
-  imports: [CommonModule, HttpModule],
+  imports: [CommonModule, HttpClientModule],
   declarations: [
     ChartComponent,
     WeatherContainer,

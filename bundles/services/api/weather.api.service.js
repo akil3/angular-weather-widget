@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, URLSearchParams } from '@angular/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { PoolingService } from '../poling.service';
 import { map, filter } from 'rxjs/operators';
 var WeatherApiService = /** @class */ (function () {
@@ -49,17 +49,17 @@ var WeatherApiService = /** @class */ (function () {
         return this.poolingService.execute(function () { return apiCall; }, this.poollingInterval);
     };
     WeatherApiService.prototype.getRequestOptions = function (queryParams) {
-        return new RequestOptions({
-            headers: new Headers(),
+        return {
+            headers: new HttpHeaders(),
             params: this.getQueryParams(queryParams)
-        });
+        };
     };
     WeatherApiService.prototype.getQueryParams = function (obj) {
-        var queryParams = new URLSearchParams();
-        queryParams.set(this.setTokenKey(), this.apiConfig.key);
+        var queryParams = new HttpParams();
+        queryParams.append(this.setTokenKey(), this.apiConfig.key);
         for (var key in obj) {
             if (obj.hasOwnProperty(key)) {
-                queryParams.set(key.toString(), obj[key]);
+                queryParams.append(key.toString(), obj[key]);
             }
         }
         return queryParams;
@@ -69,7 +69,7 @@ var WeatherApiService = /** @class */ (function () {
     ];
     /** @nocollapse */
     WeatherApiService.ctorParameters = function () { return [
-        { type: Http },
+        { type: HttpClient },
         { type: PoolingService },
         { type: WeatherApiConfig, decorators: [{ type: Inject, args: ['WEATHER_CONFIG',] }] }
     ]; };

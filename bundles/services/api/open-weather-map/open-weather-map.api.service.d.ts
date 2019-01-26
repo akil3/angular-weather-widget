@@ -1,16 +1,16 @@
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PoolingService } from '../../poling.service';
 import { CurrentWeather, Forecast, WeatherApiConfig, WeatherApiService } from '../weather.api.service';
 import { IconCodeType } from './open-weather-map-to-weather-icons';
 import { WeatherQueryParams } from '../../../weather.interfaces';
 export declare class OpenWeatherMapApiService extends WeatherApiService {
-    protected http: Http;
+    protected http: HttpClient;
     protected poolingService: PoolingService;
     apiConfig: WeatherApiConfig;
     iconCodes: IconCodeType;
     iconCodes$: Observable<any>;
-    constructor(http: Http, poolingService: PoolingService, apiConfig: WeatherApiConfig);
+    constructor(http: HttpClient, poolingService: PoolingService, apiConfig: WeatherApiConfig);
     protected mapQueryParams(params: WeatherQueryParams): OpenWeatherMapLocationRequest;
     protected mapCurrentWeatherResponse(response: OpenWeatherMapCurrentWeatherResponse): CurrentWeather;
     protected mapForecastResponse(response: OpenWeatherMapForecastResponse): Forecast[];
